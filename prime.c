@@ -16,6 +16,10 @@ int prime(int x)
 void *f1(void *x)
 {  int *a=(int *)x;
    int b=*a;
+   if(b<=1)
+   {
+    printf("prime no. can't be less than or equal to 1");
+   }
    printf("\n\n\n PRIME NUMBERS LESS THAN OR EQUAL TO %d ARE:\n",b);
    if(b>=2)
    { printf("2\n");
