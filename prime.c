@@ -13,12 +13,21 @@ int prime(int x)
    else return 0;
 
 }
-void *f1(void *x)
+void *f1()
+{  printf("*********************************************Welome*********************************\n");
+   printf("*********************************************PRIME NUMBER*****************************\n");
+   printf("*************************************************************************************\n");
+   printf("**********ENTER ANY NUMBER GREATER THAN 1 TO FIND THE PRIME NUMBERS UPTO THAT NUMBER************\n");
+}
+void *f2(void *x)
 {  int *a=(int *)x;
    int b=*a;
+    if(b<=1)
+{  printf(" prime no. can't be less than or equal to 1");
+}
    if(b<=1)
    {
-    printf("prime no. can't be less than or equal to 1");
+   	 printf("PRIME number can't be less than or equal to 1\n");
    }
    printf("\n\n\n PRIME NUMBERS LESS THAN OR EQUAL TO %d ARE:\n",b);
    if(b>=2)
@@ -35,12 +44,12 @@ void *f1(void *x)
 }
 
 void main()
-{ printf("*************************************************WELCOME*****************************************\n");
-  printf("\n\n*****************************************PRIME NUMBERS***********************************************\n");
-  printf("\n\n ENTER THE NUMBER TO PRINT THE PRIME NUMBERS LESS THAN OR EQUAL TO THE GIVEN NUMBER\n");
+{ 
   int n;
-  pthread_t th1;
+  pthread_t th1,th2;
+  pthread_create(&th1,NULL,f1,NULL);
   scanf("%d",&n);
-  pthread_create(&th1,NULL,f1,&n);
+  pthread_create(&th2,NULL,f2,&n);
   pthread_join(th1,NULL);
+  pthread_join(th2,NULL);
 }
